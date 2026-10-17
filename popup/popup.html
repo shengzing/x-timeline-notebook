@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>X Timeline Notebook</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand">
+        <span class="dot"></span>
+        <div>
+          <h1>X Timeline Notebook</h1>
+          <p id="profileName">请打开 X 账号首页</p>
+        </div>
+      </div>
+      <div id="runningBadge" class="state">记录中</div>
+    </header>
+
+    <section class="panel note-panel">
+      <div class="stats">
+        <div class="stat current">
+          <span>当前主页</span>
+          <strong id="currentCount">0</strong>
+        </div>
+        <div class="stat divider"></div>
+        <div class="stat">
+          <span>本次记录</span>
+          <strong id="sessionCount">0 / 0</strong>
+        </div>
+      </div>
+
+      <label for="targetCount">计划阅读数量</label>
+      <div class="note-row">
+        <input id="targetCount" type="number" min="1" max="20000" value="2000" />
+        <button id="startScroll" class="primary">开始</button>
+        <button id="stopScroll" class="ghost">停止</button>
+      </div>
+
+      <div class="progress">
+        <div id="progressBar"></div>
+      </div>
+      <p id="progressText">未开始</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>最近记录</h2>
+        <button id="openManager" class="link">导出</button>
+      </div>
+      <div id="records" class="records"></div>
+    </section>
+
+    <section class="panel danger-panel">
+      <button id="clearCurrent" class="danger">清除当前主页</button>
+      <button id="clearAll" class="danger subtle">清除全部</button>
+    </section>
+  </main>
+
+  <div id="managerModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>导出数据</h3>
+        <button id="closeManager" class="icon">×</button>
+      </div>
+      <div class="modal-actions">
+        <button id="exportCurrent" class="primary">当前主页 JSONL</button>
+        <button id="downloadCurrentJsonl" class="ghost">当前主页 CSV</button>
+        <button id="exportAll" class="ghost">全部 JSONL</button>
+        <button id="downloadJsonl" class="ghost">全部 CSV</button>
+      </div>
+      <p class="muted small">数据保存在浏览器本地，最多保留 5000 条。</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "X Timeline Notebook",
+  "version": "0.1.0",
+  "description": "在浏览 X / Twitter 个人主页时，把当前页面已显示的内容保存为本地阅读笔记。",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "X Timeline Notebook",
+    "default_popup": "popup/popup.html"
+  }
+}
