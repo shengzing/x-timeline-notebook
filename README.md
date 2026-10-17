@@ -1,5 +1,7 @@
 # X Timeline Notebook
 
+English | [简体中文](README.zh-CN.md)
+
 A local-first Chrome MV3 extension for keeping personal reading notes about
 posts you read on X / Twitter profile timelines.
 
